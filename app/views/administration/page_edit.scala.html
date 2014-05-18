@@ -1,0 +1,21 @@
+@(id: Long, pageForm: Form[Page])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitter_bootstrap_input.render) }
+
+@main("Edit page") {
+
+    @form(routes.Administration.pageUpdate(id)) {
+
+        <fieldset>
+            @inputText(pageForm("title"), '_label -> "Title", 'class -> "form-control")
+            @textarea(pageForm("description"), '_label -> "Description", 'rows -> 10, 'cols -> 70, 'class -> "form-control")
+        </fieldset>
+
+        <div class="actions">
+            <input type="submit" value="Update page" class="btn btn-primary">
+            <a href="@routes.Administration.pageList()" class="btn btn-default">Cancel</a>
+        </div>
+    }
+}

@@ -1,0 +1,12 @@
+@(pages: List[Page])
+
+@main("Guide") {
+    <h1 class="header">Guide</h1>
+    <ul>
+        @for(page <- pages) {
+        <li>
+            <a href="@routes.Application.page(page.id)">@page.title</a>
+        </li>
+        }
+    </ul>
+}

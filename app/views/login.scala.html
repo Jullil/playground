@@ -1,0 +1,40 @@
+@(form: Form[Application.Login])
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>PlayTest - Administration</title>
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")">
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
+</head>
+<body>
+    <div class="container">
+    @helper.form(routes.Application.authenticate) {
+        <div class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
+
+            @if(form.hasGlobalErrors) {
+                <div class="error">
+                    @form.globalError.message
+                </div>
+            }
+
+            @if(flash.contains("success")) {
+                <div class="success">
+                    @flash.get("success")
+                </div>
+            }
+            <input type="email" name="email" class="input-block-level" placeholder="Email address" value="@form("email").value">
+            <input type="password" name="password" class="input-block-level" placeholder="Password">
+            <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+        </div>
+    }
+    </div>
+</body>
+</html>
+
+
+

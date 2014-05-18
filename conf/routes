@@ -1,0 +1,27 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+# Pages
+GET     /pages                      controllers.Application.pages()
+GET     /page/:id                   controllers.Application.page(id: Long)
+
+# Administration
+GET     /admin                      controllers.Administration.index()
+GET     /admin/page                 controllers.Administration.pageList()
+GET     /admin/page/add             controllers.Administration.pageAdd()
+POST    /admin/page/add             controllers.Administration.pageSave()
+GET     /admin/page/:page/edit      controllers.Administration.pageEdit(page: Long)
+POST    /admin/page/:page/edit      controllers.Administration.pageUpdate(page: Long)
+GET     /admin/page/:page/delete     controllers.Administration.pageDelete(page: Long)
+
+# Administration Authentication
+GET     /admin/login                controllers.Application.login()
+POST    /admin/login                controllers.Application.authenticate()
+GET     /admin/logout               controllers.Application.logout()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

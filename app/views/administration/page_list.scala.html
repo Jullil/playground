@@ -1,0 +1,30 @@
+@(pages: List[Page])
+
+@main("Guide") {
+<table class="table table-striped" style="margin-bottom: 30px">
+    <thead>
+    <tr>
+        <th style="width: 50px">#</th>
+        <th>Title</th>
+        <th style="width: 150px">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @for(page <- pages) {
+    <tr>
+        <td>@page.id</td>
+        <td>@page.title</td>
+        <td>
+            <a href="@routes.Administration.pageEdit(page.id)" class="btn btn-sm btn-primary">Edit</a>
+            <a href="@routes.Administration.pageDelete(page.id)" class="btn btn-sm btn-danger">Delete</a>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>
+<div>
+    <a href="@routes.Administration.pageAdd()" class="action">
+        <button class="btn btn-success">Add new page</button>
+    </a>
+</div>
+}
